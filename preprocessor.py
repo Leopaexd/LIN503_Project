@@ -1,6 +1,6 @@
 # Author: Oliver Glant
 # Pre-process Swedish forum posts
-#Separate methods for tokenization and stemming to allow subclassing for other languages
+# Separate methods for tokenization and stemming to allow subclassing for other languages
 
 from nltk.stem.snowball import SnowballStemmer
 
@@ -13,7 +13,7 @@ class PreProcessor(object):
         stopwords.append(line.strip('\n'))
     file.close()
 
-    def preprocess(self,input_file):
+    def PreProcess(self,input_file):
         #returns a list containing all posts, each post is a list of stemmed words with stopwords removed
         print("Preprocessing started")
         with open(input_file) as file:
