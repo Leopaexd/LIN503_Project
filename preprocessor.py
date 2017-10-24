@@ -40,7 +40,6 @@ class PreProcessor(object):
         output_post = []
         for word in post:
             if word not in self.stopwords:
-                #print("Removed: ",word)
                 output_post.append(word)
         return output_post
 
