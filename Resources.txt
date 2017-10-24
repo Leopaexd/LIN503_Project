@@ -1,0 +1,1 @@
+Swedish stopword list: https://github.com/stopwords-iso/stopwords-sv
