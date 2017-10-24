@@ -9,6 +9,8 @@ class FlashbackSpider(scrapy.Spider):
     def start_requests(self):
        # yield scrapy.Request('https://www.flashback.org/t1570091',self.parse) #thread on cheese doodles
         yield scrapy.Request('https://www.flashback.org/f350', self.parse_threads) #candy, fruit and snacks subforum
+      # yield scrapy.Request('https://www.flashback.org/f54', self.parse_threads)  #physics, math and technology subforum
+      # yield scrapy.Request('https://www.flashback.org/f34', self.parse_threads)  #nazism subforum
 
     def parse_threads(self,response):
         for thread in response.css('td.td_title'):
