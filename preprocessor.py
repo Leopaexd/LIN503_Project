@@ -25,8 +25,10 @@ class PreProcessor(object):
 
         processed_post_list = []
         for post in tokenized_post_list_no_stopwords:
+            processed_post = []
             for word in post:
-                processed_post_list.append(self.stem(word)) #replaces all words in all posts with their stem
+                processed_post.append(self.stem(word)) #replaces all words in all posts with their stem
+            processed_post_list.append(processed_post)
 
         print("Preprocessing completed")
         return processed_post_list
