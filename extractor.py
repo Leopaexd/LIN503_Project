@@ -6,11 +6,11 @@ import re
 
 class Extractor(object):
 
-    def Extract(self,file):
+    def Extract(self,input_file, output_file):
         #Extract flashback forum text line by line from json file to txt, remove non-alphanumeric characters and
         # enforce lower case
-        output = open('extracted.txt','w')
-        with open(file) as textfilen:
+        output = open(output_file,'w')
+        with open(input_file) as textfilen:
             textfile = textfilen.readlines()
         print("Extraction started")
         for line in textfile:
