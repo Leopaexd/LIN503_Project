@@ -1,7 +1,8 @@
 # Author: Oliver Glant
 # Generates feature vectors for posts, using a dictionary
 
-import time
+import numpy as np
+from scipy import sparse
 
 class Vectorizer(object):
 
@@ -9,18 +10,21 @@ class Vectorizer(object):
         self.dictionary = dictionary
         self.vector_size = len(dictionary) #To avoid having the for loop access the whole dictionary for each post
         print("Vectorizer initialized")
-        self.appending_time = 0
-        self.word_counting_time = 0
 
     def vectorize(self, post):
         #Returns a feature vector representing input post, based on input dictionary
-        vector = []
-        start = time.time()
-        for _ in range(self.vector_size):
-            vector.append(0) #Ensures vector begins as null vector with correct dimensionality
-        self.appending_time += time.time()-start
-        start = time.time()
+        pre_vector = dict()
         for word in post:
-            vector[self.dictionary[word]]+=1
-        self.word_counting_time += time.time()-start
+            index = self.dictionary.get(word)
+            if index in pre_vector:
+                pre_vector[index]+=1
+            else:
+                pre_vector[index] = 1
+
+        ####Vector CREATION####
+        columns = [int(key) for key in pre_vector.keys()]
+        row = [0 for entry in columns]
+        data = [pre_vector.get(entry) for entry in columns]
+
+        vector = sparse.csr_matrix((data,(row,columns)),shape = (1,self.vector_size))
         return vector
