@@ -3,6 +3,7 @@
 
 
 import re
+import time
 
 class Extractor(object):
 
@@ -12,6 +13,7 @@ class Extractor(object):
         output = open(output_file,'w')
         with open(input_file) as textfilen:
             textfile = textfilen.readlines()
+        start = time.time()
         print("Extraction started")
         for line in textfile:
             text = line.strip('{"post": [').replace('\\u00e5','å').replace('\\u00e4', 'ä').replace('\\u00f6','ö')
@@ -25,4 +27,5 @@ class Extractor(object):
     #       text = re.sub('\)\(', ' ', text)
             output.write(text)
         output.close()
-        print("Extraction completed")
+        time_elapsed = time.time() - start
+        print("Extraction completed in ", ("%.2f" % time_elapsed), "seconds")

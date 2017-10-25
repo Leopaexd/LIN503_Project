@@ -3,6 +3,7 @@
 # Separate methods for tokenization and stemming to allow subclassing for other languages
 
 from nltk.stem.snowball import SnowballStemmer
+import time
 
 class PreProcessor(object):
     stemmer = SnowballStemmer('swedish')
@@ -15,6 +16,7 @@ class PreProcessor(object):
 
     def PreProcess(self,input_file):
         #returns a list containing all posts, each post is a list of stemmed words with stopwords removed
+        start = time.time()
         print("Preprocessing started")
         with open(input_file) as file:
             tokenized_post_list = [self.tokenize(post) for post in file.readlines()] #Creates a list containing all tokenized posts
@@ -30,7 +32,8 @@ class PreProcessor(object):
                 processed_post.append(self.stem(word)) #replaces all words in all posts with their stem
             processed_post_list.append(processed_post)
 
-        print("Preprocessing completed")
+        time_elapsed = time.time() - start
+        print("Preprocessing completed in ",("%.2f" % time_elapsed), "seconds")
         return processed_post_list
 
     def tokenize(self,post):
