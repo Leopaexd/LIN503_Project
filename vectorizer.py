@@ -24,7 +24,7 @@ class Vectorizer(object):
         ####Vector CREATION####
         columns = [int(key) for key in pre_vector.keys()]
         row = [0 for entry in columns]
-        data = [pre_vector.get(entry) for entry in columns]
+        data = [(pre_vector.get(entry))/len(columns) for entry in columns] #Relative frequency
 
         vector = sparse.csr_matrix((data,(row,columns)),shape = (1,self.vector_size))
         return vector
