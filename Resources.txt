@@ -1,3 +1,7 @@
 Scrapy
 NLTK
+Numpy + mkl 1.13
+SciPy
+Scikit-learn
+
 Swedish stopword list: https://github.com/stopwords-iso/stopwords-sv

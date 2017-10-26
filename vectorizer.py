@@ -1,7 +1,7 @@
 # Author: Oliver Glant
-# Generates feature vectors for posts, using a dictionary
+# Generates feature vectors for posts, using a dictionary, takes a list of posts as inputs
+# and generates a sparse matrix of feature vectors (csr_matrix)
 
-import numpy as np
 from scipy import sparse
 
 class Vectorizer(object):
@@ -11,20 +11,24 @@ class Vectorizer(object):
         self.vector_size = len(dictionary) #To avoid having the for loop access the whole dictionary for each post
         print("Vectorizer initialized")
 
-    def vectorize(self, post):
+
+    def vectorize(self, category):
         #Returns a feature vector representing input post, based on input dictionary
-        pre_vector = dict()
-        for word in post:
-            index = self.dictionary.get(word)
-            if index in pre_vector:
-                pre_vector[index]+=1
-            else:
-                pre_vector[index] = 1
+        columns = []
+        rows = []
+        data = []
+        post_number = -1
+        for post in category:
+            post_number += 1
+            for word in post:
+                index = self.dictionary.get(word)
+                if index is not None: #ignores words not found in dictionary
+                    if index in columns:
+                        data[columns.index(index)] += 1
+                    else:
+                        columns.append(index)
+                        rows.append(post_number)
+                        data.append(1)
 
-        ####Vector CREATION####
-        columns = [int(key) for key in pre_vector.keys()]
-        row = [0 for entry in columns]
-        data = [(pre_vector.get(entry))/len(columns) for entry in columns] #Relative frequency
-
-        vector = sparse.csr_matrix((data,(row,columns)),shape = (1,self.vector_size))
+        vector = sparse.csr_matrix((data,(rows,columns)),shape = (len(rows),self.vector_size))
         return vector

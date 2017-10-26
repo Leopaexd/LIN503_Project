@@ -13,4 +13,3 @@ class Divider(object):
         testing = open(('testing' + str(label) + ".txt"), "w")
         for line in file:
             testing.write(line)
-
