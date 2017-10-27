@@ -5,3 +5,4 @@ SciPy
 Scikit-learn
 
 Swedish stopword list: https://github.com/stopwords-iso/stopwords-sv
+Added a few more stopwords

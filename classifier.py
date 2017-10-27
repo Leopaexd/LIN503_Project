@@ -26,15 +26,19 @@ class Classifier(object):
         vectors_labels = self.Vectors_and_labels(categorized_testing_vectors)
         testing_vectors = vectors_labels[0]
         testing_labels = vectors_labels[1]
+
+        #testing_labels = []
+        #for kategori in [3,1,3,0]:
+        #    for x in range(10):
+        #        testing_labels.append(kategori)
+
         predicted_labels = self.bayes.predict(testing_vectors)
-       # for vector in testing_vectors:
-       #     predicted_labels.append(self.bayes.predict(vector))
-        for label in predicted_labels:
+        for i in range(len(predicted_labels)):
             total += 1
-            if predicted_labels[label] == testing_labels[label]:
+            if predicted_labels[i] == testing_labels[i]:
                 hits += 1
 
-        print(hits," hits out of total: ", total, ". Hit-rate: ", (hits/total))
+        print(hits," hits out of ", total, ". Hit-rate: ","%.2f" % (hits/total))
 
     def Vectors_and_labels (self,categorized_vectors):
         #Takes a list of feature matrices by category and returns matrices in index 0 and their labels in index 1
@@ -48,3 +52,6 @@ class Classifier(object):
                 labels.append(i)
         vectors_labels = [sparse.vstack(vectors), labels] #All separate feature matrices are stacked vertically to form one large
         return vectors_labels
+
+    def classify(self, unclassified_vectors):
+        return self.bayes.predict(sparse.vstack(unclassified_vectors))

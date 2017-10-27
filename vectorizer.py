@@ -11,7 +11,6 @@ class Vectorizer(object):
         self.vector_size = len(dictionary) #To avoid having the for loop access the whole dictionary for each post
         print("Vectorizer initialized")
 
-
     def vectorize(self, category):
         #Returns a feature vector representing input post, based on input dictionary
         columns = []
@@ -30,5 +29,5 @@ class Vectorizer(object):
                         rows.append(post_number)
                         data.append(1)
 
-        vector = sparse.csr_matrix((data,(rows,columns)),shape = (len(rows),self.vector_size))
+        vector = sparse.csr_matrix((data,(rows,columns)),shape = (post_number+1,self.vector_size))
         return vector
