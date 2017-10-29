@@ -4,26 +4,27 @@
 import re
 import time
 
+
 class Extractor(object):
     @staticmethod
-    def Extract(input_file, output_file):
-        #Extract flashback forum text line by line from json file to txt, remove non-alphanumeric characters and enforce lower case
-        output = open(output_file,'w')
+    def extract(input_file, output_file):
+        # extract text line by line from json file to txt, remove non-alphanumeric characters and enforce lower case
+        output = open(output_file, 'w')
         with open(input_file) as file:
             text_file = file.readlines()
         start = time.time()
         print("Extracting " + input_file)
         count = 0
         for line in text_file:
-            count +=1
-            text = line.strip('{"post": [').replace('\\u00e5','å').replace('\\u00e4', 'ä').replace('\\u00f6','ö')
-            text = text.replace('\\u00c5','Å').replace('\\u00c4','Ä').replace('\\u00d6','Ö').replace('\\u00e9','é')
-            text = text.replace('\\n', '').replace('\\r', '').replace('\\t', '').replace('"','').replace(']},','')
-            text = text.replace('.', ' ').replace(',', '').replace('!', '').replace('?', '').replace('\\', '').replace(':', '')
-            text = text.replace('(', '').replace(')', '').replace('-', '').replace('=', '')
-            text = text.replace('/', ' ') #for alternatives denoted by slashes
+            count += 1
+            text = line.strip('{"post": [').replace('\\u00e5', 'å').replace('\\u00e4', 'ä').replace('\\u00f6', 'ö')
+            text = text.replace('\\u00c5', 'Å').replace('\\u00c4', 'Ä').replace('\\u00d6', 'Ö').replace('\\u00e9', 'é')
+            text = text.replace('\\n', '').replace('\\r', '').replace('\\t', '').replace('"', '').replace(']},', '')
+            text = text.replace('.', ' ').replace(',', '').replace('!', '').replace('?', '').replace('\\', '')
+            text = text.replace('(', '').replace(')', '').replace('-', '').replace('=', '').replace(':', '')
+            text = text.replace('/', ' ')  # for alternatives denoted by slashes
             text = text.lower()
-            text = re.sub('[^A-Öa-ö] ', ' ',text )
+            text = re.sub('[^A-Öa-ö] ', ' ', text)
     #       text = re.sub('\)\(', ' ', text)
             output.write(text)
         output.close()

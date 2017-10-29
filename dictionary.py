@@ -3,11 +3,12 @@
 
 import time
 
+
 class Dictionary(object):
     dictionary = dict()
     print("Dictionary created")
 
-    def IndexWords(self,post_array):
+    def index_words(self, post_array):
         start = time.time()
         print("Indexing words")
         for post in post_array:

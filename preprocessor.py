@@ -5,21 +5,22 @@
 from nltk.stem.snowball import SnowballStemmer
 import time
 
+
 class PreProcessor(object):
     stemmer = SnowballStemmer('swedish')
 
-    file = open('swedish_stopwords.txt','r')
+    file = open('swedish_stopwords.txt', 'r')
     stopwords = []
     for line in file:
         stopwords.append(line.strip('\n'))
     file.close()
 
-    def PreProcess(self,input_file):
-        #returns a list containing all posts, each post is a list of stemmed words with stopwords removed
+    def preprocess(self, input_file):
+        # returns a list containing all posts, each post is a list of stemmed words with stopwords removed
         start = time.time()
         print("Preprocessing started")
-        with open(input_file) as file:
-            tokenized_post_list = [self.tokenize(post) for post in file.readlines()] #Creates a list containing all tokenized posts
+        with open(input_file) as file:  # Creates a list containing all tokenized posts
+            tokenized_post_list = [self.tokenize(post) for post in file.readlines()]
 
         tokenized_post_list_no_stopwords = []
         for post in tokenized_post_list:
@@ -29,22 +30,22 @@ class PreProcessor(object):
         for post in tokenized_post_list_no_stopwords:
             processed_post = []
             for word in post:
-                processed_post.append(self.stem(word)) #replaces all words in all posts with their stem
+                processed_post.append(self.stem(word))  # replaces all words in all posts with their stem
             processed_post_list.append(processed_post)
 
         time_elapsed = time.time() - start
-        print("Preprocessing completed in ",("%.2f" % time_elapsed), "seconds")
+        print("Preprocessing completed in ", ("%.2f" % time_elapsed), "seconds")
         return processed_post_list
 
-    def tokenize(self,post):
+    def tokenize(self, post):
         return post.split()
 
-    def remove_stopwords(self,post):
+    def remove_stopwords(self, post):
         output_post = []
         for word in post:
             if word not in self.stopwords:
                 output_post.append(word)
         return output_post
 
-    def stem(self,word):
+    def stem(self, word):
         return self.stemmer.stem(word)
