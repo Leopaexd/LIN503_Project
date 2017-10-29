@@ -49,7 +49,7 @@ Hamlet - a simple command line user interface to demonstrate the project
 
 testfile - module used for testing the project during development.
 
-################################ How to use (demonstration mode, using Hamlet.py) ######################################
+######################## How to use (demonstration mode, using Hamlet.py) ##############################
 1. Make sure you have extracted the json-files flashback1.json-flashback7.json in the working folder. Either from the json-files.zip archive (password required due to copyright concerns) or by using the Scraper (requires minor editing of Scraper.py and use of Scrapy). To unzip, use 7zip or similar software that supports archives encrypted with AES-256. If you wish to run Scraper yourself, instructions can be found in the next section of the readme.
 
 2. Run Hamlet.py and select categories to use 
