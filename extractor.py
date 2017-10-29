@@ -1,13 +1,12 @@
 # Author: Oliver Glant
 # Class for extracting swedish forum posts from json-file created by scraper, also returns number of lines
 
-
 import re
 import time
 
 class Extractor(object):
-
-    def Extract(self,input_file, output_file):
+    @staticmethod
+    def Extract(input_file, output_file):
         #Extract flashback forum text line by line from json file to txt, remove non-alphanumeric characters and
         # enforce lower case
         output = open(output_file,'w')

@@ -19,15 +19,15 @@ class Vectorizer(object):
         post_number = -1
         for post in category:
             post_number += 1
+            word_count = len(post)
             for word in post:
                 index = self.dictionary.get(word)
                 if index is not None: #ignores words not found in dictionary
                     if index in columns:
-                        data[columns.index(index)] += 1
+                        data[columns.index(index)] += 1/word_count #relative word frequency instead of occurences
                     else:
                         columns.append(index)
                         rows.append(post_number)
-                        data.append(1)
-
+                        data.append(1/word_count)
         vector = sparse.csr_matrix((data,(rows,columns)),shape = (post_number+1,self.vector_size))
         return vector
