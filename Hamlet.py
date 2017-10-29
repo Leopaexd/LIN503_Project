@@ -114,7 +114,7 @@ def menu():
     while choice not in valid_options:
         choice = input("\nMenu:\n" +
           "1. Set categories\n" +
-          "2. Extract\n" +
+          "2. Extract data from json-files\n" +
           "3. Preprocess and fit data\n"
           "4. Classify unknown posts\n"
           "0. Exit\n")
@@ -133,5 +133,7 @@ def main():
             Hamlet.preprocess_and_fit()
         if choice == 4:
             Hamlet.classify()
+        if choice == 0:
+            break
         choice = -1
 main()

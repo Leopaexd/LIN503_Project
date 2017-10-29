@@ -7,15 +7,14 @@ import time
 class Extractor(object):
     @staticmethod
     def Extract(input_file, output_file):
-        #Extract flashback forum text line by line from json file to txt, remove non-alphanumeric characters and
-        # enforce lower case
+        #Extract flashback forum text line by line from json file to txt, remove non-alphanumeric characters and enforce lower case
         output = open(output_file,'w')
-        with open(input_file) as textfilen:
-            textfile = textfilen.readlines()
+        with open(input_file) as file:
+            text_file = file.readlines()
         start = time.time()
-        print("Extraction started")
+        print("Extracting " + input_file)
         count = 0
-        for line in textfile:
+        for line in text_file:
             count +=1
             text = line.strip('{"post": [').replace('\\u00e5','å').replace('\\u00e4', 'ä').replace('\\u00f6','ö')
             text = text.replace('\\u00c5','Å').replace('\\u00c4','Ä').replace('\\u00d6','Ö').replace('\\u00e9','é')

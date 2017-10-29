@@ -7,9 +7,10 @@ class FlashbackSpider(scrapy.Spider):
     name = "FlashbackSpider"
 
     def start_requests(self):
-       # yield scrapy.Request('https://www.flashback.org/f350', self.parse_threads) #candy, fruit and snacks subforum (1)
-      # yield scrapy.Request('https://www.flashback.org/f54', self.parse_threads)  #physics, math and technology subforum (2)
-      # yield scrapy.Request('https://www.flashback.org/f34', self.parse_threads)  #nazism subforum (3)
+        ##ONLY ONE OF THESE SHOULD BE UNCOMMENTED AT THE SAME TIME##
+       # yield scrapy.Request('https://www.flashback.org/f350', self.parse_threads) #Candy, fruit and snacks subforum (1)
+      # yield scrapy.Request('https://www.flashback.org/f54', self.parse_threads)  #Physics, math and technology subforum (2)
+      # yield scrapy.Request('https://www.flashback.org/f34', self.parse_threads)  #Nazism subforum (3)
        # yield scrapy.Request('https://www.flashback.org/f175', self.parse_threads)  # Pets subforum (4)
        # yield scrapy.Request('https://www.flashback.org/f242', self.parse_threads)  # Roleplaying and board games subforum (5)
        # yield scrapy.Request('https://www.flashback.org/f279', self.parse_threads)  # Relationship advice subforum (6)
