@@ -6,8 +6,7 @@ How to use (demonstration mode, using Hamlet.py)
 How to use Scraper
 
 ######################################## Introduction ####################################################
-This project consists of several tools created to enable classification of Swedish forum posts into different categories.
-It's intended use is as a part of data-mining and analysis; it is not very useful by itself, other than as a proof of concept.
+This project consists of several tools created to enable classification of Swedish forum posts into different categories using a Naive Bayes classifier. It's intended use is as a part of data-mining and analysis; it is not very useful by itself, other than as a proof of concept.
 
 
 *WARNING* Many of the .json and .txt-files used by this project will be very large, so make sure you use a text editor that supports large files (such as notepad++). Using Windows notepad to open these files is not recommended. 
