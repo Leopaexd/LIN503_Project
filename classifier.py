@@ -18,9 +18,9 @@ class Classifier(object):
         vectors = vectors_labels[0]
         labels = vectors_labels[1]
 
-        print("Fitting training data...")
+        print("Training classifier...")
         self.bayes.fit(vectors, labels)
-        print("Training data fitted in", "%.2f" % (time.time() - start), " seconds")
+        print("Classifier trained in", "%.2f" % (time.time() - start), " seconds")
 
     def evaluate(self, categorized_testing_vectors):
         print("Evaluating classifier...")
