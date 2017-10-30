@@ -7,7 +7,7 @@ import classifier
 import time
 
 start = time.time()
-PreProcessor = preprocessor.PreProcessor()
+PreProcessor = preprocessor.Preprocessor()
 Dictionary = dictionary.Dictionary()
 categories = [1, 2, 3]  # Categories to be includes
 

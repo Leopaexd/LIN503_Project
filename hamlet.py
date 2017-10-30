@@ -5,7 +5,7 @@
 # Project modules
 from classifier import Classifier
 from extractor import Extractor
-from preprocessor import PreProcessor
+from preprocessor import Preprocessor
 from dictionary import Dictionary
 from vectorizer import Vectorizer
 import dataset_divider
@@ -23,7 +23,7 @@ class NaiveBayesClassifier(object):
         self.categories = []
         self.dictionary = Dictionary()
         self.classifier = Classifier()
-        self.preprocessor = PreProcessor()
+        self.preprocessor = Preprocessor()
         self.set_categories()
         self.fit = False
 

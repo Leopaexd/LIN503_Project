@@ -6,7 +6,7 @@ from nltk.stem.snowball import SnowballStemmer
 import time
 
 
-class PreProcessor(object):
+class Preprocessor(object):
     stemmer = SnowballStemmer('swedish')
 
     file = open('swedish_stopwords.txt', 'r')
