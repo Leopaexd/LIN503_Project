@@ -20,5 +20,5 @@ class Dictionary(object):
         time_elapsed = time.time() - start
         print("Indexing completed in ", ("%.2f" % time_elapsed), "seconds")
 
-        def clear(self):
-            self.dictionary.clear()
+    def clear(self):
+        self.dictionary.clear()
