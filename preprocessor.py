@@ -18,7 +18,7 @@ class Preprocessor(object):
     def preprocess(self, input_file):
         # returns a list containing all posts, each post is a list of stemmed words with stopwords removed
         start = time.time()
-        print("Preprocessing started")
+        print("Preprocessing ", input_file)
         with open(input_file) as file:  # Creates a list containing all tokenized posts
             tokenized_post_list = [self.tokenize(post) for post in file.readlines()]
 
