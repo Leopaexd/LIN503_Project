@@ -20,7 +20,6 @@ label_list = ["Candy", "Physics, math and technology", "Nazism", "Pets", "Rolepl
 
 class NaiveBayesClassifier(object):
     def __init__(self):
-        self.categories = []
         self.dictionary = Dictionary()
         self.classifier = Classifier()
         self.preprocessor = Preprocessor()
@@ -30,6 +29,7 @@ class NaiveBayesClassifier(object):
     def set_categories(self):
         # Determines which labels are to be included
         self.dictionary.clear()
+        self.categories = []
         print("Dictionary cleared")
         print("\nDecide which categories to use:")
         for label in label_list:
