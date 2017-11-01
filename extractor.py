@@ -1,5 +1,7 @@
 # Author: Oliver Glant
 # Class for extracting swedish forum posts from json-file created by scraper, also returns number of lines
+# Uses both regular expressions and string methods, as this combination was found to be more reliable than only
+# using regular regular expressions.
 
 import re
 import time
@@ -25,7 +27,6 @@ class Extractor(object):
             text = text.replace('/', ' ')  # for alternatives denoted by slashes
             text = text.lower()
             text = re.sub('[^A-Öa-ö] ', ' ', text)
-    #       text = re.sub('\)\(', ' ', text)
             output.write(text)
         output.close()
         time_elapsed = time.time() - start
