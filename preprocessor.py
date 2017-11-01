@@ -9,11 +9,10 @@ import time
 class Preprocessor(object):
     stemmer = SnowballStemmer('swedish')
 
-    file = open('swedish_stopwords.txt', 'r')
     stopwords = []
-    for line in file:
-        stopwords.append(line.strip('\n'))
-    file.close()
+    with open('swedish_stopwords.txt', 'r') as file:
+        for line in file:
+            stopwords.append(line.strip('\n'))
 
     def preprocess(self, input_file):
         # returns a list containing all posts, each post is a list of stemmed words with stopwords removed
